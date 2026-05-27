@@ -60,5 +60,27 @@ The most important thing is to **think** about what you're doing.\n==========
 - Skips malformed clippings (e.g., missing metadata or text).
 - Handles Unicode and special characters using `utf-8-sig` encoding.
 
+<<<<<<< HEAD
 ## License
 This project is licensed under the **MIT License**.
+=======
+## Note
+This repository was published under `fairyfemirins` due to GitHub namespace restrictions. A transfer to `femirins` is pending.
+>>>>>>> f6ff370 (docs: Add namespace mismatch note)
+## Note
+This repository is published under `fairyfemirins` due to GitHub namespace restrictions. A transfer to `femirins` is pending.
+
+To request a transfer:
+1. Open an issue in this repository.
+2. Contact `@femirins` on GitHub.
+
+## Manual Transfer Process
+1. Navigate to: [https://github.com/fairyfemirins/unpaste/settings](https://github.com/fairyfemirins/unpaste/settings)
+2. Under "Danger Zone", select "Transfer ownership".
+3. Enter the target namespace (`femirins`) and confirm.
+
+## Setup
+```bash
+git clone https://github.com/fairyfemirins/unpaste.git
+cd unpaste
+```
