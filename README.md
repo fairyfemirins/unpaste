@@ -1,44 +1,50 @@
 # UnPaste
 
-UnPaste is a lightweight CLI tool to remove formatting from text. It works in headless environments and has **no dependencies**.
+**UnPaste** is a CLI tool to unformat text before pasting or processing. It removes extra whitespace, normalizes line breaks, and strips formatting (e.g., RTF, HTML, Word styles).
 
-## Problem
-Users frequently copy formatted text (e.g., from Word, web pages) and need to paste it as plain text. Existing tools (e.g., PureText) are Windows-only or require GUI dependencies.
+## Features
+- **Stdin Processing**: Pipe text directly to UnPaste for unformatting.
+- **Clipboard Support**: Unformat text from the clipboard (if `pyperclip` is available).
+- **Cross-Platform**: Works on Linux, macOS, and Windows.
 
-## Solution
-UnPaste strips formatting from stdin or files and outputs plain text to stdout.
+## Installation
+```bash
+pip install pyperclip  # Optional, for clipboard support
+```
 
 ## Usage
+### Unformat from Stdin
 ```bash
-# From stdin
-echo "Hello, **world**!" | python3 unpaste.py
-# Output: Hello, world!
+echo "formatted   text" | python3 unpaste.py
+# Output: formatted text
+```
 
-# From file
-python3 unpaste.py < input.txt
+### Unformat from Clipboard
+```bash
+python3 unpaste.py --clipboard
 ```
 
 ## Technical Architecture
-- **Input**: stdin or file.
-- **Processing**: Regex to remove Markdown/HTML formatting.
-- **Output**: Plain text to stdout.
-- **Dependencies**: None.
+- **Input**: Text from stdin or clipboard.
+- **Processing**: Normalize whitespace and strip formatting.
+- **Output**: Unformatted text to stdout.
 
 ## Reproducible Tutorial
 1. Clone the repository:
    ```bash
-   git clone https://github.com/femirins/unpaste.git
+   git clone https://github.com/fairyfemirins/unpaste.git
    cd unpaste
    ```
 2. Test the tool:
    ```bash
-   echo "Hello, **world**!" > input.txt
-   python3 unpaste.py < input.txt
+   echo "Hello, **world**!" | python3 unpaste.py
    ```
    Expected output: `Hello, world!`
 
 ## License
-MIT## Note
+MIT
+
+## Note
 This repository is published under `fairyfemirins` due to GitHub namespace restrictions. A transfer to `femirins` is pending.
 
 To request a transfer:
@@ -51,13 +57,7 @@ To request a transfer:
 3. Enter the target namespace (`femirins`) and confirm.
 
 ## Manual Merge Process
-This repository contains an `autonomous-build-v2` branch with the latest changes. To merge:
+This repository contains an `autonomous-build-v3` branch with the latest changes. To merge:
 1. Navigate to: [https://github.com/fairyfemirins/unpaste/pulls](https://github.com/fairyfemirins/unpaste/pulls)
-2. Open a pull request from `autonomous-build-v2` to `main`.
+2. Open a pull request from `autonomous-build-v3` to `main`.
 3. Merge the pull request manually.
-
-## Setup
-```bash
-git clone https://github.com/fairyfemirins/unpaste.git
-cd unpaste
-```
