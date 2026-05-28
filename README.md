@@ -1,96 +1,23 @@
-# Kindle Highlights to Markdown Converter
+# Unpaste
 
-A tool to convert Kindle's "My Clippings.txt" file into structured Markdown notes for easy integration into note-taking systems or blogs.
+Strip formatting from clipboard text before pasting. Cross-platform (Linux/macOS/Windows via WSL).
 
-## Features
-- Parses `My Clippings.txt` into book titles, highlights, notes, and metadata.
-- Converts highlights into clean Markdown with blockquotes and metadata.
-- Supports Unicode and special characters.
+## Installation
+```bash
+pip install pyclip
+curl -o /usr/local/bin/unpaste https://raw.githubusercontent.com/femirins/unpaste/main/unpaste.py
+chmod +x /usr/local/bin/unpaste
+```
 
 ## Usage
-### Prerequisites
-- Python 3.6+
-
-### Installation
-Clone the repository:
-```bash
-git clone https://github.com/Femirins/kindle-highlights-to-markdown.git
-cd kindle-highlights-to-markdown
-```
-
-### Convert Clippings
-```bash
-python3 kindle_to_md.py "My Clippings.txt" output.md
-```
-
-### Example
-**Input (`My Clippings.txt`):**
-```
-The Pragmatic Programmer: Your Journey to Mastery (Andrew Hunt)
-- Your Highlight on page 123 | Added on Tuesday, May 14, 2026 9:28:25 PM
-
-The most important thing is to **think** about what you're doing.\n==========
-```
-
-**Output (`output.md`):**
-```markdown
-# The Pragmatic Programmer: Your Journey to Mastery (Andrew Hunt)
-
-> **Your Highlight on page 123** | Added on Tuesday, May 14, 2026 9:28:25 PM
-
-> The most important thing is to **think** about what you're doing.
-
----
-```
+1. Copy formatted text (e.g., from Word/Google Docs).
+2. Run `unpaste` in terminal.
+3. Paste into any plaintext editor (formatting removed).
 
 ## Technical Architecture
-### Parsing Logic
-1. **Splitting Clippings:** The `My Clippings.txt` file is split into individual clippings using the `==========` delimiter.
-2. **Metadata Extraction:** Each clipping is parsed to extract:
-   - Book title
-   - Clipping type (highlight, note, or bookmark)
-   - Date added
-   - Highlight or note text
-3. **Markdown Generation:** The parsed data is converted into Markdown with:
-   - Book titles as headers (`#`)
-   - Metadata as bold text (`** **`)
-   - Highlights/notes as blockquotes (`> `)
+- **Input**: System clipboard (via `xclip`/`pbpaste`/`clip`).
+- **Processing**: Plaintext extraction.
+- **Output**: System clipboard (overwrites original).
 
-### Error Handling
-- Skips malformed clippings (e.g., missing metadata or text).
-- Handles Unicode and special characters using `utf-8-sig` encoding.
-
-<<<<<<< HEAD
 ## License
-This project is licensed under the **MIT License**.
-=======
-## Note
-This repository was published under `fairyfemirins` due to GitHub namespace restrictions. A transfer to `femirins` is pending.
->>>>>>> f6ff370 (docs: Add namespace mismatch note)
-## Note
-This repository is published under `fairyfemirins` due to GitHub namespace restrictions. A transfer to `femirins` is pending.
-
-To request a transfer:
-1. Open an issue in this repository.
-2. Contact `@femirins` on GitHub.
-
-## Manual Transfer Process
-1. Navigate to: [https://github.com/fairyfemirins/unpaste/settings](https://github.com/fairyfemirins/unpaste/settings)
-2. Under "Danger Zone", select "Transfer ownership".
-3. Enter the target namespace (`femirins`) and confirm.
-
-## Setup
-```bash
-git clone https://github.com/fairyfemirins/unpaste.git
-cd unpaste
-```## Note
-This repository is published under `fairyfemirins` due to GitHub namespace restrictions. A transfer to `femirins` is pending.
-
-To request a transfer:
-1. Open an issue in this repository.
-2. Contact `@femirins` on GitHub.
-
-## Manual Transfer Process
-1. Navigate to: [https://github.com/fairyfemirins/unpaste/settings](https://github.com/fairyfemirins/unpaste/settings)
-2. Under "Danger Zone", select "Transfer ownership".
-3. Enter the target namespace (`femirins`) and confirm.
+MIT

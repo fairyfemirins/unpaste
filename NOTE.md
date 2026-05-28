@@ -9,9 +9,3 @@ To request a transfer:
 1. Navigate to: [https://github.com/fairyfemirins/unpaste/settings](https://github.com/fairyfemirins/unpaste/settings)
 2. Under "Danger Zone", select "Transfer ownership".
 3. Enter the target namespace (`femirins`) and confirm.
-
-## Setup
-```bash
-git clone https://github.com/fairyfemirins/unpaste.git
-cd unpaste
-```
