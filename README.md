@@ -1,63 +1,36 @@
-# UnPaste
+# Unpaste
 
-UnPaste is a lightweight CLI tool to remove formatting from text. It works in headless environments and has **no dependencies**.
+**Unpaste** is a cross-platform CLI tool that strips formatting from clipboard text and pastes it as plaintext. No more manual pasting into Notepad!
 
-## Problem
-Users frequently copy formatted text (e.g., from Word, web pages) and need to paste it as plain text. Existing tools (e.g., PureText) are Windows-only or require GUI dependencies.
+## Features
+- **Cross-Platform:** Linux, macOS, Windows.
+- **Zero Dependencies:** Uses `pyperclip` and platform-native tools.
+- **Instant:** No GUI, no bloat.
 
-## Solution
-UnPaste strips formatting from stdin or files and outputs plain text to stdout.
+## Installation
+```bash
+pip install pyperclip click pywin32  # Windows only
+chmod +x unpaste.py
+sudo ln -s $(pwd)/unpaste.py /usr/local/bin/unpaste
+```
 
 ## Usage
 ```bash
-# From stdin
-echo "Hello, **world**!" | python3 unpaste.py
-# Output: Hello, world!
-
-# From file
-python3 unpaste.py < input.txt
+unpaste          # One-time paste
+unpaste --daemon # Run in background (not yet implemented)
 ```
 
 ## Technical Architecture
-- **Input**: stdin or file.
-- **Processing**: Regex to remove Markdown/HTML formatting.
-- **Output**: Plain text to stdout.
-- **Dependencies**: None.
+1. **Clipboard:** `pyperclip` reads/writes clipboard.
+2. **Platform Detection:** `platform.system()` selects the right paste command.
+3. **Paste Simulation:**
+   - Linux: `xdotool key ctrl+v`
+   - macOS: `cliclick t:cmd+v`
+   - Windows: `win32api.keybd_event`
 
-## Reproducible Tutorial
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/femirins/unpaste.git
-   cd unpaste
-   ```
-2. Test the tool:
-   ```bash
-   echo "Hello, **world**!" > input.txt
-   python3 unpaste.py < input.txt
-   ```
-   Expected output: `Hello, world!`
+## Limitations
+- **Daemon Mode:** Not yet implemented (requires `pynput` for keyboard hooks).
+- **HTML/RTF:** Only strips plaintext formatting (no HTML/RTF parsing).
 
 ## License
-MIT## Note
-This repository is published under `fairyfemirins` due to GitHub namespace restrictions. A transfer to `femirins` is pending.
-
-To request a transfer:
-1. Open an issue in this repository.
-2. Contact `@femirins` on GitHub.
-
-## Manual Transfer Process
-1. Navigate to: [https://github.com/fairyfemirins/unpaste/settings](https://github.com/fairyfemirins/unpaste/settings)
-2. Under "Danger Zone", select "Transfer ownership".
-3. Enter the target namespace (`femirins`) and confirm.
-
-## Manual Merge Process
-This repository contains an `autonomous-build-v2` branch with the latest changes. To merge:
-1. Navigate to: [https://github.com/fairyfemirins/unpaste/pulls](https://github.com/fairyfemirins/unpaste/pulls)
-2. Open a pull request from `autonomous-build-v2` to `main`.
-3. Merge the pull request manually.
-
-## Setup
-```bash
-git clone https://github.com/fairyfemirins/unpaste.git
-cd unpaste
-```
+MIT
